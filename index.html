@@ -24,9 +24,10 @@
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO mit Charizard -->
 <section class="hero">
   <div class="hero-bg">POKÉMON</div>
+  <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/006.png" class="hero-pokemon" alt="" loading="lazy">
   <div class="hero-inner">
     <h1 class="hero-title"><span class="t-white">Amazing</span><br><span class="t-black">Rudolf</span></h1>
     <a href="shop.html" class="btn-hero">Los Gehts →</a>
@@ -36,33 +37,23 @@
 <!-- ZUBEHÖR -->
 <section class="zubehoer-band">
   <div class="container">
-    <h2 class="sec-title">Zubehör<span class="accent">:</span></h2>
-    <div class="grid-2">
-
-      <div class="card">
-        <div class="card-img" style="background:linear-gradient(135deg,#222,#111)">
-          <span class="card-emoji">🎴</span>
-          <button class="wish-btn" data-id="14" onclick="toggleWishlist(14)">🤍</button>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Kartensleeves (100 Stück)</div>
-          <div class="card-price">6.90 CHF</div>
-          <button class="btn-buy" onclick="addToCart(14,'Kartensleeves (100 Stück)',6.9,'🎴')">In den Warenkorb</button>
-        </div>
+    <div class="zub-layout">
+      <!-- Links: Kartensleeves -->
+      <div class="zub-item">
+        <span class="zub-label">Kartensleeves:</span>
+        <div class="zub-art" style="font-size:5rem">🎴</div>
+        <button class="zub-price-pill" onclick="addToCart(14,'Kartensleeves (100 Stück)',6.9,'🎴')">6.90 CHF</button>
       </div>
-
-      <div class="card">
-        <div class="card-img" style="background:linear-gradient(135deg,#f0c040,#d49a00)">
-          <span class="card-emoji">📦</span>
-          <button class="wish-btn" data-id="15" onclick="toggleWishlist(15)">🤍</button>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Pikachu Deckbox</div>
-          <div class="card-price">7.90 CHF</div>
-          <button class="btn-buy" onclick="addToCart(15,'Pikachu Deckbox',7.9,'📦')">In den Warenkorb</button>
-        </div>
+      <!-- Mitte: Titel -->
+      <div class="zub-center">
+        <div class="zub-title">Zubehör:</div>
       </div>
-
+      <!-- Rechts: Deckbox -->
+      <div class="zub-item">
+        <span class="zub-label">Pikachu Deckbox:</span>
+        <div class="zub-art" style="font-size:5rem">📦</div>
+        <button class="zub-price-pill" onclick="addToCart(15,'Pikachu Deckbox',7.9,'📦')">7.90 CHF</button>
+      </div>
     </div>
   </div>
 </section>
@@ -70,6 +61,7 @@
 <!-- INFOS -->
 <section class="info-strip" id="infos">
   <div class="info-left">
+    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/658.png" class="info-left-pokemon" alt="" loading="lazy">
     <div class="info-brand">Amazing<br>Rudolf</div>
   </div>
   <div class="info-right">
@@ -78,21 +70,21 @@
   </div>
 </section>
 
-<!-- FEATURED -->
+<!-- TOP KARTEN -->
 <section class="container" style="padding:48px 24px">
   <h2 class="sec-title">Top <span class="accent">Karten</span></h2>
   <div class="grid-4">
 
     <div class="card">
-      <div class="card-img" style="background:linear-gradient(135deg,#ff4400,#cc2200)">
-        <span class="card-emoji">🔥</span>
+      <div class="card-img" style="background:#f4f4f4">
+        <img src="https://images.pokemontcg.io/sm12/217_hires.png" class="product-img" alt="Reshiram & Charizard GX" loading="lazy">
         <span class="card-tag">Beliebt</span>
         <button class="wish-btn" data-id="1" onclick="toggleWishlist(1)">🤍</button>
       </div>
       <div class="card-body">
-        <div class="card-name">Reshiram & Charizard GX Tag Team</div>
+        <div class="card-name">Reshiram &amp; Charizard GX Tag Team</div>
         <div class="card-price">68 CHF</div>
-        <button class="btn-buy" onclick="addToCart(1,'Reshiram & Charizard GX Tag Team',68,'🔥')">In den Warenkorb</button>
+        <button class="btn-buy" onclick="addToCart(1,'Reshiram &amp; Charizard GX Tag Team',68,'🔥')">In den Warenkorb</button>
       </div>
     </div>
 
@@ -110,8 +102,8 @@
     </div>
 
     <div class="card">
-      <div class="card-img" style="background:linear-gradient(135deg,#8800dd,#5500aa)">
-        <span class="card-emoji">🌟</span>
+      <div class="card-img" style="background:#f4f4f4">
+        <img src="https://images.pokemontcg.io/xy7/76_hires.png" class="product-img" alt="Mega Rayquaza EX" loading="lazy">
         <span class="card-tag">Selten</span>
         <button class="wish-btn" data-id="3" onclick="toggleWishlist(3)">🤍</button>
       </div>
@@ -123,8 +115,8 @@
     </div>
 
     <div class="card">
-      <div class="card-img" style="background:linear-gradient(135deg,#cc8800,#996600)">
-        <span class="card-emoji">⚡</span>
+      <div class="card-img" style="background:#f4f4f4">
+        <img src="https://images.pokemontcg.io/base1/58_hires.png" class="product-img" alt="Pikachu Base Set" loading="lazy">
         <span class="card-tag">Vintage</span>
         <button class="wish-btn" data-id="11" onclick="toggleWishlist(11)">🤍</button>
       </div>
@@ -145,7 +137,6 @@
   <strong>Amazing Rudolf</strong> – Pokémon Karten Shop · 2026 · Schnupperpraktikum Leano Rudolf
 </footer>
 
-<!-- CART -->
 <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
 <div class="cart-drawer" id="cart-drawer">
   <div class="cart-head"><h2>Warenkorb 🛒</h2><button onclick="closeCart()">✕</button></div>

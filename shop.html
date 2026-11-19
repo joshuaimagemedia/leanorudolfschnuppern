@@ -10,233 +10,257 @@
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">
-    <img src="logo-1.png" class="logo-img" alt="Rudolf Logo">
-    <span class="nav-brand">Amazing<br><b>Rudolf</b></span>
-  </a>
-  <div class="nav-links">
-    <a href="neu.html">Neu im Sortiment</a>
-    <a href="index.html#infos">Infos</a>
-    <a href="shop.html" class="active">SHOP</a>
-    <a href="wunschliste.html">Wunschliste ♥</a>
-    <button class="nav-cart-btn" onclick="openCart()">🛒<span class="cart-badge" id="cb1"></span></button>
-  </div>
-</nav>
-
-<div class="shop-header">
+<!-- SHOP HERO (ersetzt normale nav) -->
+<div class="shop-hero">
+  <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/006.png" class="shop-hero-pokemon" alt="" loading="lazy">
   <h1>Shop</h1>
-  <div class="search-bar">
-    <input type="text" id="search-input" placeholder="Suchen..." oninput="filterCards()">
+  <button class="shop-hero-cart" onclick="openCart()">🛒<span class="cart-badge" id="cb1"></span></button>
+</div>
+
+<!-- MINI NAV: Logo + Suche -->
+<div class="shop-mini-nav">
+  <a href="index.html" class="nav-logo" style="text-decoration:none">
+    <img src="logo-1.png" class="logo-img" alt="Rudolf Logo">
+    <span class="shop-mini-brand">Amazing<br><b>Rudolf</b></span>
+  </a>
+  <div class="shop-search">
     <span>🔍</span>
+    <input type="text" id="search-input" placeholder="Suchen..." oninput="filterCards()">
+  </div>
+  <div style="display:flex;gap:6px;align-items:center">
+    <a href="neu.html" style="font-weight:700;font-size:.78rem;color:#111;text-decoration:none;padding:6px 10px;border:2px solid #111;border-radius:16px">Neu</a>
+    <a href="wunschliste.html" style="font-weight:700;font-size:.78rem;color:#111;text-decoration:none;padding:6px 10px;border:2px solid #111;border-radius:16px">♥</a>
   </div>
 </div>
 
-<div class="filter-row" id="filter-row">
-  <button class="filter-btn active" onclick="setFilter('alle',this)">Alle</button>
-  <button class="filter-btn" onclick="setFilter('karte',this)">Karten</button>
-  <button class="filter-btn" onclick="setFilter('booster',this)">Booster</button>
-  <button class="filter-btn" onclick="setFilter('box',this)">Boxen</button>
-  <button class="filter-btn" onclick="setFilter('vintage',this)">Vintage</button>
-  <button class="filter-btn" onclick="setFilter('zubehör',this)">Zubehör</button>
-</div>
+<!-- ORANGE SHOP BG -->
+<div class="shop-bg">
 
-<div class="container" style="padding:8px 24px 60px">
-  <div class="grid-4" id="shop-grid">
-
-    <div class="card" data-cat="karte">
-      <div class="card-img" style="background:linear-gradient(135deg,#ff4400,#cc2200)">
-        <span class="card-emoji">🔥</span>
-        <span class="card-tag">Beliebt</span>
-        <button class="wish-btn" data-id="1" onclick="toggleWishlist(1)">🤍</button>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Reshiram & Charizard GX Tag Team</div>
-        <div class="card-price">68 CHF</div>
-        <button class="btn-buy" onclick="addToCart(1,'Reshiram & Charizard GX Tag Team',68,'🔥')">In den Warenkorb</button>
-      </div>
-    </div>
-
-    <div class="card" data-cat="karte">
-      <div class="card-img" style="background:linear-gradient(135deg,#0055cc,#003399)">
-        <span class="card-emoji">💧</span>
-        <span class="card-tag">Selten</span>
-        <button class="wish-btn" data-id="2" onclick="toggleWishlist(2)">🤍</button>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Greninja EX SAR</div>
-        <div class="card-price">176 CHF</div>
-        <button class="btn-buy" onclick="addToCart(2,'Greninja EX SAR',176,'💧')">In den Warenkorb</button>
-      </div>
-    </div>
-
-    <div class="card" data-cat="karte">
-      <div class="card-img" style="background:linear-gradient(135deg,#8800dd,#5500aa)">
-        <span class="card-emoji">🌟</span>
-        <span class="card-tag">Selten</span>
-        <button class="wish-btn" data-id="3" onclick="toggleWishlist(3)">🤍</button>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Mega Rayquaza EX SAR</div>
-        <div class="card-price">170 CHF</div>
-        <button class="btn-buy" onclick="addToCart(3,'Mega Rayquaza EX SAR',170,'🌟')">In den Warenkorb</button>
-      </div>
-    </div>
-
-    <div class="card" data-cat="booster">
-      <div class="card-img" style="background:linear-gradient(135deg,#ddaa00,#aa7700)">
-        <span class="card-emoji">🎁</span>
-        <span class="card-tag">Neu</span>
-        <button class="wish-btn" data-id="4" onclick="toggleWishlist(4)">🤍</button>
-      </div>
-      <div class="card-body">
-        <div class="card-name">30th Anniversary Pack</div>
-        <div class="card-price">13 CHF</div>
-        <button class="btn-buy" onclick="addToCart(4,'30th Anniversary Pack',13,'🎁')">In den Warenkorb</button>
-      </div>
-    </div>
-
-    <div class="card" data-cat="box">
-      <div class="card-img" style="background:linear-gradient(135deg,#ddaa00,#996600)">
-        <span class="card-emoji">📦</span>
-        <span class="card-tag">Neu</span>
-        <button class="wish-btn" data-id="5" onclick="toggleWishlist(5)">🤍</button>
-      </div>
-      <div class="card-body">
-        <div class="card-name">30th Anniversary Top Trainer Box</div>
-        <div class="card-price">249 CHF</div>
-        <button class="btn-buy" onclick="addToCart(5,'30th Anniversary Top Trainer Box',249,'📦')">In den Warenkorb</button>
-      </div>
-    </div>
-
-    <div class="card" data-cat="box">
-      <div class="card-img" style="background:linear-gradient(135deg,#ddaa00,#aa7700)">
-        <span class="card-emoji">⭐</span>
-        <span class="card-tag">Neu</span>
-        <button class="wish-btn" data-id="6" onclick="toggleWishlist(6)">🤍</button>
-      </div>
-      <div class="card-body">
-        <div class="card-name">30th Anniversary Ditto Premium Collection</div>
-        <div class="card-price">105 CHF</div>
-        <button class="btn-buy" onclick="addToCart(6,'30th Anniversary Ditto Premium Collection',105,'⭐')">In den Warenkorb</button>
-      </div>
-    </div>
-
-    <div class="card" data-cat="box">
-      <div class="card-img" style="background:linear-gradient(135deg,#ddaa00,#996600)">
-        <span class="card-emoji">🥷</span>
-        <span class="card-tag">Neu</span>
-        <button class="wish-btn" data-id="7" onclick="toggleWishlist(7)">🤍</button>
-      </div>
-      <div class="card-body">
-        <div class="card-name">30th Anniversary Greninja Tin Box</div>
-        <div class="card-price">55 CHF</div>
-        <button class="btn-buy" onclick="addToCart(7,'30th Anniversary Greninja Tin Box',55,'🥷')">In den Warenkorb</button>
-      </div>
-    </div>
-
-    <div class="card" data-cat="box">
-      <div class="card-img" style="background:linear-gradient(135deg,#226622,#114411)">
-        <span class="card-emoji">🌿</span>
-        <span class="card-tag">Premium</span>
-        <button class="wish-btn" data-id="8" onclick="toggleWishlist(8)">🤍</button>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Storm Emeralda Elite Trainer Box</div>
-        <div class="card-price">2'100 CHF</div>
-        <button class="btn-buy" onclick="addToCart(8,'Storm Emeralda Elite Trainer Box',2100,'🌿')">In den Warenkorb</button>
-      </div>
-    </div>
-
-    <div class="card" data-cat="box">
-      <div class="card-img" style="background:linear-gradient(135deg,#226622,#114411)">
-        <span class="card-emoji">📋</span>
-        <button class="wish-btn" data-id="9" onclick="toggleWishlist(9)">🤍</button>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Storm Emeralda Display</div>
-        <div class="card-price">99 CHF</div>
-        <button class="btn-buy" onclick="addToCart(9,'Storm Emeralda Display',99,'📋')">In den Warenkorb</button>
-      </div>
-    </div>
-
-    <div class="card" data-cat="booster">
-      <div class="card-img" style="background:linear-gradient(135deg,#226622,#114411)">
-        <span class="card-emoji">🃏</span>
-        <button class="wish-btn" data-id="10" onclick="toggleWishlist(10)">🤍</button>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Storm Emeralda Pack</div>
-        <div class="card-price">13 CHF</div>
-        <button class="btn-buy" onclick="addToCart(10,'Storm Emeralda Pack',13,'🃏')">In den Warenkorb</button>
-      </div>
-    </div>
-
-    <div class="card" data-cat="vintage">
-      <div class="card-img" style="background:linear-gradient(135deg,#cc8800,#885500)">
-        <span class="card-emoji">⚡</span>
-        <span class="card-tag">Vintage</span>
-        <button class="wish-btn" data-id="11" onclick="toggleWishlist(11)">🤍</button>
-      </div>
-      <div class="card-body">
-        <div class="card-name">1999 German Base Set Pikachu</div>
-        <div class="card-price">4'500 CHF</div>
-        <button class="btn-buy" onclick="addToCart(11,'1999 German Base Set Pikachu',4500,'⚡')">In den Warenkorb</button>
-      </div>
-    </div>
-
-    <div class="card" data-cat="vintage">
-      <div class="card-img" style="background:linear-gradient(135deg,#227722,#115511)">
-        <span class="card-emoji">🌱</span>
-        <span class="card-tag">Vintage</span>
-        <button class="wish-btn" data-id="12" onclick="toggleWishlist(12)">🤍</button>
-      </div>
-      <div class="card-body">
-        <div class="card-name">1999 English Base Set Venusaur</div>
-        <div class="card-price">33'300 CHF</div>
-        <button class="btn-buy" onclick="addToCart(12,'1999 English Base Set Venusaur',33300,'🌱')">In den Warenkorb</button>
-      </div>
-    </div>
-
-    <div class="card" data-cat="vintage">
-      <div class="card-img" style="background:linear-gradient(135deg,#cc2200,#881100)">
-        <span class="card-emoji">🔥</span>
-        <span class="card-tag">Vintage</span>
-        <button class="wish-btn" data-id="13" onclick="toggleWishlist(13)">🤍</button>
-      </div>
-      <div class="card-body">
-        <div class="card-name">1996 Japanese Base Set Charizard</div>
-        <div class="card-price">35'000 CHF</div>
-        <button class="btn-buy" onclick="addToCart(13,'1996 Japanese Base Set Charizard',35000,'🔥')">In den Warenkorb</button>
-      </div>
-    </div>
-
-    <div class="card" data-cat="zubehör">
-      <div class="card-img" style="background:linear-gradient(135deg,#222,#111)">
-        <span class="card-emoji">🎴</span>
-        <button class="wish-btn" data-id="14" onclick="toggleWishlist(14)">🤍</button>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Kartensleeves (100 Stück)</div>
-        <div class="card-price">6.90 CHF</div>
-        <button class="btn-buy" onclick="addToCart(14,'Kartensleeves (100 Stück)',6.9,'🎴')">In den Warenkorb</button>
-      </div>
-    </div>
-
-    <div class="card" data-cat="zubehör">
-      <div class="card-img" style="background:linear-gradient(135deg,#f0c040,#d49a00)">
-        <span class="card-emoji">📦</span>
-        <button class="wish-btn" data-id="15" onclick="toggleWishlist(15)">🤍</button>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Pikachu Deckbox</div>
-        <div class="card-price">7.90 CHF</div>
-        <button class="btn-buy" onclick="addToCart(15,'Pikachu Deckbox',7.9,'📦')">In den Warenkorb</button>
-      </div>
-    </div>
-
+  <!-- Filter Tabs -->
+  <div class="filter-row" id="filter-row">
+    <button class="filter-btn active" onclick="setFilter('alle',this)">Alle</button>
+    <button class="filter-btn" onclick="setFilter('karte',this)">Karten</button>
+    <button class="filter-btn" onclick="setFilter('booster',this)">Booster</button>
+    <button class="filter-btn" onclick="setFilter('box',this)">Boxen</button>
+    <button class="filter-btn" onclick="setFilter('vintage',this)">Vintage</button>
+    <button class="filter-btn" onclick="setFilter('zubehör',this)">Zubehör</button>
   </div>
-</div>
+
+  <!-- 3-SPALTEN GRID -->
+  <div class="grid-3" id="shop-grid">
+
+    <!-- 1: Reshiram & Charizard GX -->
+    <div class="shop-card" data-cat="karte">
+      <div class="shop-card-img">
+        <img src="https://images.pokemontcg.io/sm12/217_hires.png" alt="Reshiram & Charizard GX" loading="lazy">
+      </div>
+      <div class="shop-card-body">
+        <div class="shop-card-name">Reshiram &amp; Charizard GX Tag Team</div>
+        <div class="price-row">
+          <button class="price-pill" onclick="addToCart(1,'Reshiram &amp; Charizard GX Tag Team',68,'🔥')">68 CHF</button>
+          <button class="wish-heart-btn" data-id="1" onclick="toggleWishlist(1)">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2: Greninja EX SAR -->
+    <div class="shop-card" data-cat="karte">
+      <div class="shop-card-img" style="background:linear-gradient(135deg,#0055cc,#003399)">
+        <span class="c-emoji">💧</span>
+      </div>
+      <div class="shop-card-body">
+        <div class="shop-card-name">Greninja EX SAR</div>
+        <div class="price-row">
+          <button class="price-pill" onclick="addToCart(2,'Greninja EX SAR',176,'💧')">176 CHF</button>
+          <button class="wish-heart-btn" data-id="2" onclick="toggleWishlist(2)">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3: Mega Rayquaza EX -->
+    <div class="shop-card" data-cat="karte">
+      <div class="shop-card-img">
+        <img src="https://images.pokemontcg.io/xy7/76_hires.png" alt="Mega Rayquaza EX" loading="lazy">
+      </div>
+      <div class="shop-card-body">
+        <div class="shop-card-name">Mega Rayquaza EX SAR</div>
+        <div class="price-row">
+          <button class="price-pill" onclick="addToCart(3,'Mega Rayquaza EX SAR',170,'🌟')">170 CHF</button>
+          <button class="wish-heart-btn" data-id="3" onclick="toggleWishlist(3)">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4: 30th Anniversary Pack -->
+    <div class="shop-card" data-cat="booster">
+      <div class="shop-card-img" style="background:linear-gradient(135deg,#ddaa00,#aa7700)">
+        <span class="c-emoji">🎁</span>
+      </div>
+      <div class="shop-card-body">
+        <div class="shop-card-name">30th Anniversary Pack</div>
+        <div class="price-row">
+          <button class="price-pill" onclick="addToCart(4,'30th Anniversary Pack',13,'🎁')">13 CHF</button>
+          <button class="wish-heart-btn" data-id="4" onclick="toggleWishlist(4)">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5: 30th Anniversary Top Trainer Box -->
+    <div class="shop-card" data-cat="box">
+      <div class="shop-card-img" style="background:linear-gradient(135deg,#ddaa00,#996600)">
+        <span class="c-emoji">📦</span>
+      </div>
+      <div class="shop-card-body">
+        <div class="shop-card-name">30th Anniversary Top Trainer Box</div>
+        <div class="price-row">
+          <button class="price-pill" onclick="addToCart(5,'30th Anniversary Top Trainer Box',249,'📦')">249 CHF</button>
+          <button class="wish-heart-btn" data-id="5" onclick="toggleWishlist(5)">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6: 30th Anniversary Ditto Premium Collection -->
+    <div class="shop-card" data-cat="box">
+      <div class="shop-card-img" style="background:linear-gradient(135deg,#ddaa00,#aa7700)">
+        <span class="c-emoji">⭐</span>
+      </div>
+      <div class="shop-card-body">
+        <div class="shop-card-name">30th Anniversary Ditto Premium Collection</div>
+        <div class="price-row">
+          <button class="price-pill" onclick="addToCart(6,'30th Anniversary Ditto Premium Collection',105,'⭐')">105 CHF</button>
+          <button class="wish-heart-btn" data-id="6" onclick="toggleWishlist(6)">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7: 30th Anniversary Greninja Tin Box -->
+    <div class="shop-card" data-cat="box">
+      <div class="shop-card-img" style="background:linear-gradient(135deg,#ddaa00,#996600)">
+        <span class="c-emoji">🥷</span>
+      </div>
+      <div class="shop-card-body">
+        <div class="shop-card-name">30th Anniversary Greninja Tin Box</div>
+        <div class="price-row">
+          <button class="price-pill" onclick="addToCart(7,'30th Anniversary Greninja Tin Box',55,'🥷')">55 CHF</button>
+          <button class="wish-heart-btn" data-id="7" onclick="toggleWishlist(7)">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8: Storm Emeralda Elite Trainer Box -->
+    <div class="shop-card" data-cat="box">
+      <div class="shop-card-img" style="background:linear-gradient(135deg,#226622,#114411)">
+        <span class="c-emoji">🌿</span>
+      </div>
+      <div class="shop-card-body">
+        <div class="shop-card-name">Storm Emeralda Elite Trainer Box</div>
+        <div class="price-row">
+          <button class="price-pill" onclick="addToCart(8,'Storm Emeralda Elite Trainer Box',2100,'🌿')">2'100 CHF</button>
+          <button class="wish-heart-btn" data-id="8" onclick="toggleWishlist(8)">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9: Storm Emeralda Display -->
+    <div class="shop-card" data-cat="box">
+      <div class="shop-card-img" style="background:linear-gradient(135deg,#226622,#114411)">
+        <span class="c-emoji">📋</span>
+      </div>
+      <div class="shop-card-body">
+        <div class="shop-card-name">Storm Emeralda Display</div>
+        <div class="price-row">
+          <button class="price-pill" onclick="addToCart(9,'Storm Emeralda Display',99,'📋')">99 CHF</button>
+          <button class="wish-heart-btn" data-id="9" onclick="toggleWishlist(9)">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10: Storm Emeralda Pack -->
+    <div class="shop-card" data-cat="booster">
+      <div class="shop-card-img" style="background:linear-gradient(135deg,#226622,#114411)">
+        <span class="c-emoji">🃏</span>
+      </div>
+      <div class="shop-card-body">
+        <div class="shop-card-name">Storm Emeralda Pack</div>
+        <div class="price-row">
+          <button class="price-pill" onclick="addToCart(10,'Storm Emeralda Pack',13,'🃏')">13 CHF</button>
+          <button class="wish-heart-btn" data-id="10" onclick="toggleWishlist(10)">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11: 1999 German Pikachu -->
+    <div class="shop-card" data-cat="vintage">
+      <div class="shop-card-img">
+        <img src="https://images.pokemontcg.io/base1/58_hires.png" alt="Pikachu Base Set" loading="lazy">
+      </div>
+      <div class="shop-card-body">
+        <div class="shop-card-name">1999 German Base Set Pikachu</div>
+        <div class="price-row">
+          <button class="price-pill" onclick="addToCart(11,'1999 German Base Set Pikachu',4500,'⚡')">4'500 CHF</button>
+          <button class="wish-heart-btn" data-id="11" onclick="toggleWishlist(11)">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12: 1999 English Venusaur -->
+    <div class="shop-card" data-cat="vintage">
+      <div class="shop-card-img">
+        <img src="https://images.pokemontcg.io/base1/15_hires.png" alt="Venusaur Base Set" loading="lazy">
+      </div>
+      <div class="shop-card-body">
+        <div class="shop-card-name">1999 English Base Set Venusaur</div>
+        <div class="price-row">
+          <button class="price-pill" onclick="addToCart(12,'1999 English Base Set Venusaur',33300,'🌱')">33'300 CHF</button>
+          <button class="wish-heart-btn" data-id="12" onclick="toggleWishlist(12)">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13: 1996 Charizard -->
+    <div class="shop-card" data-cat="vintage">
+      <div class="shop-card-img">
+        <img src="https://images.pokemontcg.io/base1/4_hires.png" alt="Charizard Base Set" loading="lazy">
+      </div>
+      <div class="shop-card-body">
+        <div class="shop-card-name">1996 Japanese Base Set Charizard</div>
+        <div class="price-row">
+          <button class="price-pill" onclick="addToCart(13,'1996 Japanese Base Set Charizard',35000,'🔥')">35'000 CHF</button>
+          <button class="wish-heart-btn" data-id="13" onclick="toggleWishlist(13)">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14: Kartensleeves -->
+    <div class="shop-card" data-cat="zubehör">
+      <div class="shop-card-img" style="background:linear-gradient(135deg,#333,#111)">
+        <span class="c-emoji">🎴</span>
+      </div>
+      <div class="shop-card-body">
+        <div class="shop-card-name">Kartensleeves (100 Stück)</div>
+        <div class="price-row">
+          <button class="price-pill" onclick="addToCart(14,'Kartensleeves (100 Stück)',6.9,'🎴')">6.90 CHF</button>
+          <button class="wish-heart-btn" data-id="14" onclick="toggleWishlist(14)">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15: Pikachu Deckbox -->
+    <div class="shop-card" data-cat="zubehör">
+      <div class="shop-card-img" style="background:linear-gradient(135deg,#f0c040,#d49a00)">
+        <span class="c-emoji">📦</span>
+      </div>
+      <div class="shop-card-body">
+        <div class="shop-card-name">Pikachu Deckbox</div>
+        <div class="price-row">
+          <button class="price-pill" onclick="addToCart(15,'Pikachu Deckbox',7.9,'📦')">7.90 CHF</button>
+          <button class="wish-heart-btn" data-id="15" onclick="toggleWishlist(15)">♡</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /grid-3 -->
+</div><!-- /shop-bg -->
 
 <footer>
   <strong>Amazing Rudolf</strong> – Pokémon Karten Shop · 2026 · Schnupperpraktikum Leano Rudolf
@@ -255,7 +279,8 @@
 
 <script src="shop.js"></script>
 <script>
-let activeFilter = 'alle';
+/* Filter */
+var activeFilter = 'alle';
 function setFilter(cat, btn) {
   activeFilter = cat;
   document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
@@ -263,15 +288,30 @@ function setFilter(cat, btn) {
   filterCards();
 }
 function filterCards() {
-  const q = document.getElementById('search-input').value.toLowerCase();
-  document.querySelectorAll('#shop-grid .card').forEach(function(card) {
-    const cat = card.dataset.cat;
-    const name = card.querySelector('.card-name').textContent.toLowerCase();
-    const matchCat = activeFilter === 'alle' || cat === activeFilter;
-    const matchQ = !q || name.includes(q);
+  var q = document.getElementById('search-input').value.toLowerCase();
+  document.querySelectorAll('#shop-grid .shop-card').forEach(function(card) {
+    var cat = card.dataset.cat;
+    var name = card.querySelector('.shop-card-name').textContent.toLowerCase();
+    var matchCat = activeFilter === 'alle' || cat === activeFilter;
+    var matchQ = !q || name.includes(q);
     card.style.display = (matchCat && matchQ) ? '' : 'none';
   });
 }
+
+/* Extend refreshWishlistButtons für .wish-heart-btn */
+var _origRefresh = refreshWishlistButtons;
+refreshWishlistButtons = function() {
+  _origRefresh();
+  var wl = getWishlist();
+  document.querySelectorAll('.wish-heart-btn').forEach(function(btn) {
+    var id = parseInt(btn.dataset.id);
+    var active = wl.includes(id);
+    btn.classList.toggle('active', active);
+    btn.textContent = active ? '♥' : '♡';
+  });
+};
+/* Initial state */
+document.addEventListener('DOMContentLoaded', function() { refreshWishlistButtons(); });
 </script>
 </body>
 </html>

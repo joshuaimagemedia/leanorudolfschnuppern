@@ -24,9 +24,10 @@
   </div>
 </nav>
 
-<div class="neu-banner" style="background:var(--or)">
-  <h1 style="color:#fff;text-shadow:4px 4px 0 var(--bk)">Wunschliste ♥</h1>
-  <p style="color:rgba(255,255,255,.8)">Deine gespeicherten Produkte</p>
+<!-- WEISSER HEADER mit rotem "liste:" -->
+<div class="wish-page-header">
+  <h1>Wunsch<span class="red">liste:</span></h1>
+  <span class="wish-heart-icon">♥</span>
 </div>
 
 <div class="container" style="padding:48px 24px 80px" id="wish-container">
@@ -49,22 +50,22 @@
 <div id="toast" class="toast"></div>
 <script src="shop.js"></script>
 <script>
-const ALL_PRODUCTS = [
-  {id:1, name:'Reshiram & Charizard GX Tag Team', price:68, emoji:'🔥', bg:'linear-gradient(135deg,#ff4400,#cc2200)'},
-  {id:2, name:'Greninja EX SAR', price:176, emoji:'💧', bg:'linear-gradient(135deg,#0055cc,#003399)'},
-  {id:3, name:'Mega Rayquaza EX SAR', price:170, emoji:'🌟', bg:'linear-gradient(135deg,#8800dd,#5500aa)'},
-  {id:4, name:'30th Anniversary Pack', price:13, emoji:'🎁', bg:'linear-gradient(135deg,#ddaa00,#aa7700)'},
-  {id:5, name:'30th Anniversary Top Trainer Box', price:249, emoji:'📦', bg:'linear-gradient(135deg,#ddaa00,#996600)'},
-  {id:6, name:'30th Anniversary Ditto Premium Collection', price:105, emoji:'⭐', bg:'linear-gradient(135deg,#ddaa00,#aa7700)'},
-  {id:7, name:'30th Anniversary Greninja Tin Box', price:55, emoji:'🥷', bg:'linear-gradient(135deg,#ddaa00,#996600)'},
-  {id:8, name:'Storm Emeralda Elite Trainer Box', price:2100, emoji:'🌿', bg:'linear-gradient(135deg,#226622,#114411)'},
-  {id:9, name:'Storm Emeralda Display', price:99, emoji:'📋', bg:'linear-gradient(135deg,#226622,#114411)'},
-  {id:10, name:'Storm Emeralda Pack', price:13, emoji:'🃏', bg:'linear-gradient(135deg,#226622,#114411)'},
-  {id:11, name:'1999 German Base Set Pikachu', price:4500, emoji:'⚡', bg:'linear-gradient(135deg,#cc8800,#885500)'},
-  {id:12, name:'1999 English Base Set Venusaur', price:33300, emoji:'🌱', bg:'linear-gradient(135deg,#227722,#115511)'},
-  {id:13, name:'1996 Japanese Base Set Charizard', price:35000, emoji:'🔥', bg:'linear-gradient(135deg,#cc2200,#881100)'},
-  {id:14, name:'Kartensleeves (100 Stück)', price:6.9, emoji:'🎴', bg:'linear-gradient(135deg,#222,#111)'},
-  {id:15, name:'Pikachu Deckbox', price:7.9, emoji:'📦', bg:'linear-gradient(135deg,#f0c040,#d49a00)'},
+var ALL_PRODUCTS = [
+  {id:1, name:'Reshiram & Charizard GX Tag Team', price:68, emoji:'🔥', bg:'linear-gradient(135deg,#ff4400,#cc2200)', img:'https://images.pokemontcg.io/sm12/217_hires.png'},
+  {id:2, name:'Greninja EX SAR', price:176, emoji:'💧', bg:'linear-gradient(135deg,#0055cc,#003399)', img:''},
+  {id:3, name:'Mega Rayquaza EX SAR', price:170, emoji:'🌟', bg:'', img:'https://images.pokemontcg.io/xy7/76_hires.png'},
+  {id:4, name:'30th Anniversary Pack', price:13, emoji:'🎁', bg:'linear-gradient(135deg,#ddaa00,#aa7700)', img:''},
+  {id:5, name:'30th Anniversary Top Trainer Box', price:249, emoji:'📦', bg:'linear-gradient(135deg,#ddaa00,#996600)', img:''},
+  {id:6, name:'30th Anniversary Ditto Premium Collection', price:105, emoji:'⭐', bg:'linear-gradient(135deg,#ddaa00,#aa7700)', img:''},
+  {id:7, name:'30th Anniversary Greninja Tin Box', price:55, emoji:'🥷', bg:'linear-gradient(135deg,#ddaa00,#996600)', img:''},
+  {id:8, name:'Storm Emeralda Elite Trainer Box', price:2100, emoji:'🌿', bg:'linear-gradient(135deg,#226622,#114411)', img:''},
+  {id:9, name:'Storm Emeralda Display', price:99, emoji:'📋', bg:'linear-gradient(135deg,#226622,#114411)', img:''},
+  {id:10, name:'Storm Emeralda Pack', price:13, emoji:'🃏', bg:'linear-gradient(135deg,#226622,#114411)', img:''},
+  {id:11, name:'1999 German Base Set Pikachu', price:4500, emoji:'⚡', bg:'', img:'https://images.pokemontcg.io/base1/58_hires.png'},
+  {id:12, name:'1999 English Base Set Venusaur', price:33300, emoji:'🌱', bg:'', img:'https://images.pokemontcg.io/base1/15_hires.png'},
+  {id:13, name:'1996 Japanese Base Set Charizard', price:35000, emoji:'🔥', bg:'', img:'https://images.pokemontcg.io/base1/4_hires.png'},
+  {id:14, name:'Kartensleeves (100 Stück)', price:6.9, emoji:'🎴', bg:'linear-gradient(135deg,#222,#111)', img:''},
+  {id:15, name:'Pikachu Deckbox', price:7.9, emoji:'📦', bg:'linear-gradient(135deg,#f0c040,#d49a00)', img:''},
 ];
 
 function formatPrice(p) {
@@ -72,17 +73,17 @@ function formatPrice(p) {
 }
 
 function renderWishlist() {
-  const wl = getWishlist();
-  const container = document.getElementById('wish-container');
+  var wl = getWishlist();
+  var container = document.getElementById('wish-container');
   container.textContent = '';
-  const items = ALL_PRODUCTS.filter(function(p){ return wl.includes(p.id); });
+  var items = ALL_PRODUCTS.filter(function(p){ return wl.includes(p.id); });
   if (items.length === 0) {
-    const div = document.createElement('div');
+    var div = document.createElement('div');
     div.className = 'wish-empty';
-    const p = document.createElement('p');
+    var p = document.createElement('p');
     p.textContent = 'Deine Wunschliste ist noch leer.';
-    const br = document.createElement('br');
-    const a = document.createElement('a');
+    var br = document.createElement('br');
+    var a = document.createElement('a');
     a.href = 'shop.html';
     a.textContent = 'Jetzt im Shop stöbern →';
     div.appendChild(p);
@@ -91,21 +92,31 @@ function renderWishlist() {
     container.appendChild(div);
     return;
   }
-  const grid = document.createElement('div');
+  var grid = document.createElement('div');
   grid.className = 'grid-4';
   items.forEach(function(p) {
-    const card = document.createElement('div');
+    var card = document.createElement('div');
     card.className = 'card';
 
-    const imgDiv = document.createElement('div');
+    var imgDiv = document.createElement('div');
     imgDiv.className = 'card-img';
-    imgDiv.style.background = p.bg;
+    if (p.img) {
+      imgDiv.style.background = '#f4f4f4';
+      var img = document.createElement('img');
+      img.src = p.img;
+      img.className = 'product-img';
+      img.alt = p.name;
+      img.loading = 'lazy';
+      imgDiv.appendChild(img);
+    } else {
+      imgDiv.style.background = p.bg;
+      var emoji = document.createElement('span');
+      emoji.className = 'card-emoji';
+      emoji.textContent = p.emoji;
+      imgDiv.appendChild(emoji);
+    }
 
-    const emoji = document.createElement('span');
-    emoji.className = 'card-emoji';
-    emoji.textContent = p.emoji;
-
-    const wishBtn = document.createElement('button');
+    var wishBtn = document.createElement('button');
     wishBtn.className = 'wish-btn active';
     wishBtn.dataset.id = p.id;
     wishBtn.textContent = '❤️';
@@ -113,22 +124,20 @@ function renderWishlist() {
       toggleWishlist(p.id);
       renderWishlist();
     };
-
-    imgDiv.appendChild(emoji);
     imgDiv.appendChild(wishBtn);
 
-    const body = document.createElement('div');
+    var body = document.createElement('div');
     body.className = 'card-body';
 
-    const name = document.createElement('div');
+    var name = document.createElement('div');
     name.className = 'card-name';
     name.textContent = p.name;
 
-    const price = document.createElement('div');
+    var price = document.createElement('div');
     price.className = 'card-price';
     price.textContent = formatPrice(p.price);
 
-    const btn = document.createElement('button');
+    var btn = document.createElement('button');
     btn.className = 'btn-buy';
     btn.textContent = 'In den Warenkorb';
     btn.onclick = function() { addToCart(p.id, p.name, p.price, p.emoji); };
