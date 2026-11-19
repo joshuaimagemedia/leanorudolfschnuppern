@@ -3,221 +3,159 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amazing Rudolf – Wir sind im Aufbau</title>
+  <title>Amazing Rudolf – Pokémon Shop</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@700;900&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --orange: #FF6B00;
-      --black: #111;
-      --gold: #D4A017;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--orange);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* animated bg circles */
-    .bg-circle {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.06);
-      animation: float 8s ease-in-out infinite;
-    }
-    .bg-circle:nth-child(1) { width: 500px; height: 500px; top: -180px; right: -120px; animation-delay: 0s; }
-    .bg-circle:nth-child(2) { width: 300px; height: 300px; bottom: -100px; left: -80px; animation-delay: 2s; }
-    .bg-circle:nth-child(3) { width: 200px; height: 200px; top: 60%; right: 10%; animation-delay: 4s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-20px) scale(1.03); }
-    }
-
-    .content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 32px 24px;
-      gap: 28px;
-    }
-
-    /* LOGO */
-    .logo-wrap {
-      animation: pulse 3s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.04); }
-    }
-
-    /* BADGE */
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--black);
-      color: white;
-      padding: 8px 20px;
-      border-radius: 32px;
-      font-size: 0.8rem;
-      font-weight: 900;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-    .badge .dot {
-      width: 8px; height: 8px;
-      background: var(--orange);
-      border-radius: 50%;
-      animation: blink 1.2s ease-in-out infinite;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.2; }
-    }
-
-    /* TITLE */
-    h1 {
-      font-family: 'Bangers', cursive;
-      font-size: clamp(4rem, 15vw, 8rem);
-      line-height: 0.88;
-      font-style: italic;
-      letter-spacing: 2px;
-    }
-    h1 .white { color: white; text-shadow: 5px 5px 0 var(--black); }
-    h1 .black { color: var(--black); text-shadow: 3px 3px 0 white; }
-
-    .subtitle {
-      font-size: clamp(1rem, 3vw, 1.3rem);
-      font-weight: 900;
-      color: var(--black);
-      max-width: 420px;
-      line-height: 1.5;
-    }
-
-    /* PROGRESS BAR */
-    .progress-wrap {
-      width: min(380px, 90vw);
-    }
-    .progress-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.75rem;
-      font-weight: 900;
-      color: var(--black);
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .progress-bar {
-      height: 14px;
-      background: rgba(0,0,0,0.2);
-      border-radius: 20px;
-      overflow: hidden;
-      border: 2px solid var(--black);
-    }
-    .progress-fill {
-      height: 100%;
-      width: 0%;
-      background: var(--black);
-      border-radius: 20px;
-      animation: fillbar 2s ease-out 0.5s forwards;
-    }
-    @keyframes fillbar {
-      to { width: 42%; }
-    }
-
-    /* FOOTER */
-    .footer-line {
-      position: absolute;
-      bottom: 24px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: rgba(0,0,0,0.5);
-      letter-spacing: 1px;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="bg-circle"></div>
-  <div class="bg-circle"></div>
-  <div class="bg-circle"></div>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo-1.png" class="logo-img" alt="Rudolf Logo">
+    <span class="nav-brand">Amazing<br><b>Rudolf</b></span>
+  </a>
+  <div class="nav-links">
+    <a href="neu.html">Neu im Sortiment</a>
+    <a href="index.html#infos">Infos</a>
+    <a href="shop.html">SHOP</a>
+    <a href="wunschliste.html">Wunschliste ♥</a>
+    <button class="nav-cart-btn" onclick="openCart()">🛒<span class="cart-badge" id="cb1"></span></button>
+  </div>
+</nav>
 
-  <div class="content">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">POKÉMON</div>
+  <div class="hero-inner">
+    <h1 class="hero-title"><span class="t-white">Amazing</span><br><span class="t-black">Rudolf</span></h1>
+    <a href="shop.html" class="btn-hero">Los Gehts →</a>
+  </div>
+</section>
 
-    <!-- Badge -->
-    <div class="badge">
-      <span class="dot"></span>
-      Wir sind im Aufbau
-    </div>
+<!-- ZUBEHÖR -->
+<section class="zubehoer-band">
+  <div class="container">
+    <h2 class="sec-title">Zubehör<span class="accent">:</span></h2>
+    <div class="grid-2">
 
-    <!-- Logo -->
-    <div class="logo-wrap">
-      <svg width="130" height="130" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="49" fill="#555" stroke="#D4A017" stroke-width="4"/>
-        <circle cx="50" cy="50" r="40" fill="#f0f0f0" fill-opacity="0.12"/>
-        <text x="50" y="22" text-anchor="middle" font-size="12" font-weight="900" fill="#D4A017" font-family="Georgia,serif" letter-spacing="2">Rudolf</text>
-        <defs>
-          <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#aaa"/>
-            <stop offset="50%" style="stop-color:#e8e8e8"/>
-            <stop offset="100%" style="stop-color:#888"/>
-          </linearGradient>
-        </defs>
-        <rect x="31" y="27" width="8" height="50" rx="2" fill="url(#g)"/>
-        <rect x="31" y="27" width="38" height="8" rx="2" fill="url(#g)"/>
-        <rect x="31" y="49" width="26" height="8" rx="2" fill="url(#g)"/>
-        <line x1="39" y1="57" x2="62" y2="77" stroke="#D4A017" stroke-width="8" stroke-linecap="round"/>
-      </svg>
-    </div>
-
-    <!-- Title -->
-    <h1>
-      <span class="white">Amazing</span><br>
-      <span class="black">Rudolf</span>
-    </h1>
-
-    <p class="subtitle">
-      Unser Pokémon-Shop ist fast bereit.<br>Schau bald wieder vorbei! 🎴
-    </p>
-
-    <!-- Progress -->
-    <div class="progress-wrap">
-      <div class="progress-label">
-        <span>Fortschritt</span>
-        <span id="pct">0%</span>
+      <div class="card">
+        <div class="card-img" style="background:linear-gradient(135deg,#222,#111)">
+          <span class="card-emoji">🎴</span>
+          <button class="wish-btn" data-id="14" onclick="toggleWishlist(14)">🤍</button>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Kartensleeves (100 Stück)</div>
+          <div class="card-price">6.90 CHF</div>
+          <button class="btn-buy" onclick="addToCart(14,'Kartensleeves (100 Stück)',6.9,'🎴')">In den Warenkorb</button>
+        </div>
       </div>
-      <div class="progress-bar">
-        <div class="progress-fill" id="fill"></div>
+
+      <div class="card">
+        <div class="card-img" style="background:linear-gradient(135deg,#f0c040,#d49a00)">
+          <span class="card-emoji">📦</span>
+          <button class="wish-btn" data-id="15" onclick="toggleWishlist(15)">🤍</button>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Pikachu Deckbox</div>
+          <div class="card-price">7.90 CHF</div>
+          <button class="btn-buy" onclick="addToCart(15,'Pikachu Deckbox',7.9,'📦')">In den Warenkorb</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- INFOS -->
+<section class="info-strip" id="infos">
+  <div class="info-left">
+    <div class="info-brand">Amazing<br>Rudolf</div>
+  </div>
+  <div class="info-right">
+    <h2 class="info-title">Infos über die Webseite</h2>
+    <p>Was als gemeinsame Begeisterung für das Öffnen von Booster-Packs, das Jagen nach seltenen Karten und das Schwelgen in Nostalgie begann, hat 2026 ein neues Zuhause gefunden: unsere eigene Pokémon-Plattform. Wir sind selbst leidenschaftliche Sammlerinnen und Sammler – von den ersten Base-Set-Klassikern bis hin zu aktuellen Sets. Mit dieser Webseite möchten wir genau diese Leidenschaft teilen.</p>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section class="container" style="padding:48px 24px">
+  <h2 class="sec-title">Top <span class="accent">Karten</span></h2>
+  <div class="grid-4">
+
+    <div class="card">
+      <div class="card-img" style="background:linear-gradient(135deg,#ff4400,#cc2200)">
+        <span class="card-emoji">🔥</span>
+        <span class="card-tag">Beliebt</span>
+        <button class="wish-btn" data-id="1" onclick="toggleWishlist(1)">🤍</button>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Reshiram & Charizard GX Tag Team</div>
+        <div class="card-price">68 CHF</div>
+        <button class="btn-buy" onclick="addToCart(1,'Reshiram & Charizard GX Tag Team',68,'🔥')">In den Warenkorb</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img" style="background:linear-gradient(135deg,#0055cc,#003399)">
+        <span class="card-emoji">💧</span>
+        <span class="card-tag">Selten</span>
+        <button class="wish-btn" data-id="2" onclick="toggleWishlist(2)">🤍</button>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Greninja EX SAR</div>
+        <div class="card-price">176 CHF</div>
+        <button class="btn-buy" onclick="addToCart(2,'Greninja EX SAR',176,'💧')">In den Warenkorb</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img" style="background:linear-gradient(135deg,#8800dd,#5500aa)">
+        <span class="card-emoji">🌟</span>
+        <span class="card-tag">Selten</span>
+        <button class="wish-btn" data-id="3" onclick="toggleWishlist(3)">🤍</button>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Mega Rayquaza EX SAR</div>
+        <div class="card-price">170 CHF</div>
+        <button class="btn-buy" onclick="addToCart(3,'Mega Rayquaza EX SAR',170,'🌟')">In den Warenkorb</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img" style="background:linear-gradient(135deg,#cc8800,#996600)">
+        <span class="card-emoji">⚡</span>
+        <span class="card-tag">Vintage</span>
+        <button class="wish-btn" data-id="11" onclick="toggleWishlist(11)">🤍</button>
+      </div>
+      <div class="card-body">
+        <div class="card-name">1999 German Base Set Pikachu</div>
+        <div class="card-price">4'500 CHF</div>
+        <button class="btn-buy" onclick="addToCart(11,'1999 German Base Set Pikachu',4500,'⚡')">In den Warenkorb</button>
       </div>
     </div>
 
   </div>
+  <div style="text-align:center;margin-top:36px">
+    <a href="shop.html" class="btn-more">Alle Produkte ansehen →</a>
+  </div>
+</section>
 
-  <div class="footer-line">Amazing Rudolf · Pokémon Shop · 2026</div>
+<footer>
+  <strong>Amazing Rudolf</strong> – Pokémon Karten Shop · 2026 · Schnupperpraktikum Leano Rudolf
+</footer>
 
-  <script>
-    // Animate percentage counter
-    const pct = document.getElementById('pct');
-    let n = 0;
-    const target = 42;
-    const t = setTimeout(function tick() {
-      if (n < target) { n++; pct.textContent = n + '%'; setTimeout(tick, 40); }
-    }, 500);
-  </script>
-
+<!-- CART -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-head"><h2>Warenkorb 🛒</h2><button onclick="closeCart()">✕</button></div>
+  <div class="cart-list" id="cart-items"></div>
+  <div class="cart-foot">
+    <div class="cart-total-row"><span>Gesamt</span><span id="cart-total">0 CHF</span></div>
+    <button class="btn-checkout" onclick="showToast('🚧 Checkout kommt bald!')">Zur Kasse →</button>
+  </div>
+</div>
+<div id="toast" class="toast"></div>
+<script src="shop.js"></script>
 </body>
 </html>

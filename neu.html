@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neu im Sortiment – Amazing Rudolf</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo-1.png" class="logo-img" alt="Rudolf Logo">
+    <span class="nav-brand">Amazing<br><b>Rudolf</b></span>
+  </a>
+  <div class="nav-links">
+    <a href="neu.html" class="active">Neu im Sortiment</a>
+    <a href="index.html#infos">Infos</a>
+    <a href="shop.html">SHOP</a>
+    <a href="wunschliste.html">Wunschliste ♥</a>
+    <button class="nav-cart-btn" onclick="openCart()">🛒<span class="cart-badge" id="cb1"></span></button>
+  </div>
+</nav>
+
+<div class="neu-banner">
+  <h1>Neu im Sortiment</h1>
+  <p>Die neuesten Pokémon-Produkte frisch im Shop</p>
+</div>
+
+<!-- 30TH ANNIVERSARY SECTION -->
+<section style="background:#fff;border-bottom:3px solid #111;padding:48px 24px">
+  <div class="container">
+    <h2 class="sec-title">30th <span class="accent">Anniversary</span></h2>
+    <div class="grid-4">
+
+      <div class="card" data-cat="booster">
+        <div class="card-img" style="background:linear-gradient(135deg,#ddaa00,#aa7700)">
+          <span class="card-emoji">🎁</span>
+          <span class="card-tag">Neu</span>
+          <button class="wish-btn" data-id="4" onclick="toggleWishlist(4)">🤍</button>
+        </div>
+        <div class="card-body">
+          <div class="card-name">30th Anniversary Pack</div>
+          <div class="card-price">13 CHF</div>
+          <button class="btn-buy" onclick="addToCart(4,'30th Anniversary Pack',13,'🎁')">In den Warenkorb</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img" style="background:linear-gradient(135deg,#ddaa00,#996600)">
+          <span class="card-emoji">📦</span>
+          <span class="card-tag">Neu</span>
+          <button class="wish-btn" data-id="5" onclick="toggleWishlist(5)">🤍</button>
+        </div>
+        <div class="card-body">
+          <div class="card-name">30th Anniversary Top Trainer Box</div>
+          <div class="card-price">249 CHF</div>
+          <button class="btn-buy" onclick="addToCart(5,'30th Anniversary Top Trainer Box',249,'📦')">In den Warenkorb</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img" style="background:linear-gradient(135deg,#ddaa00,#aa7700)">
+          <span class="card-emoji">⭐</span>
+          <span class="card-tag">Neu</span>
+          <button class="wish-btn" data-id="6" onclick="toggleWishlist(6)">🤍</button>
+        </div>
+        <div class="card-body">
+          <div class="card-name">30th Anniversary Ditto Premium Collection</div>
+          <div class="card-price">105 CHF</div>
+          <button class="btn-buy" onclick="addToCart(6,'30th Anniversary Ditto Premium Collection',105,'⭐')">In den Warenkorb</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img" style="background:linear-gradient(135deg,#ddaa00,#996600)">
+          <span class="card-emoji">🥷</span>
+          <span class="card-tag">Neu</span>
+          <button class="wish-btn" data-id="7" onclick="toggleWishlist(7)">🤍</button>
+        </div>
+        <div class="card-body">
+          <div class="card-name">30th Anniversary Greninja Tin Box</div>
+          <div class="card-price">55 CHF</div>
+          <button class="btn-buy" onclick="addToCart(7,'30th Anniversary Greninja Tin Box',55,'🥷')">In den Warenkorb</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STORM EMERALDA SECTION -->
+<section style="background:var(--bg,#f4f4f4);padding:48px 24px">
+  <div class="container">
+    <h2 class="sec-title">Storm <span class="accent">Emeralda</span></h2>
+    <div class="grid-4">
+
+      <div class="card">
+        <div class="card-img" style="background:linear-gradient(135deg,#226622,#114411)">
+          <span class="card-emoji">🌿</span>
+          <span class="card-tag">Premium</span>
+          <button class="wish-btn" data-id="8" onclick="toggleWishlist(8)">🤍</button>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Storm Emeralda Elite Trainer Box</div>
+          <div class="card-price">2'100 CHF</div>
+          <button class="btn-buy" onclick="addToCart(8,'Storm Emeralda Elite Trainer Box',2100,'🌿')">In den Warenkorb</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img" style="background:linear-gradient(135deg,#226622,#114411)">
+          <span class="card-emoji">📋</span>
+          <button class="wish-btn" data-id="9" onclick="toggleWishlist(9)">🤍</button>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Storm Emeralda Display</div>
+          <div class="card-price">99 CHF</div>
+          <button class="btn-buy" onclick="addToCart(9,'Storm Emeralda Display',99,'📋')">In den Warenkorb</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img" style="background:linear-gradient(135deg,#226622,#114411)">
+          <span class="card-emoji">🃏</span>
+          <button class="wish-btn" data-id="10" onclick="toggleWishlist(10)">🤍</button>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Storm Emeralda Pack</div>
+          <div class="card-price">13 CHF</div>
+          <button class="btn-buy" onclick="addToCart(10,'Storm Emeralda Pack',13,'🃏')">In den Warenkorb</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>Amazing Rudolf</strong> – Pokémon Karten Shop · 2026 · Schnupperpraktikum Leano Rudolf
+</footer>
+
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-head"><h2>Warenkorb 🛒</h2><button onclick="closeCart()">✕</button></div>
+  <div class="cart-list" id="cart-items"></div>
+  <div class="cart-foot">
+    <div class="cart-total-row"><span>Gesamt</span><span id="cart-total">0 CHF</span></div>
+    <button class="btn-checkout" onclick="showToast('🚧 Checkout kommt bald!')">Zur Kasse →</button>
+  </div>
+</div>
+<div id="toast" class="toast"></div>
+<script src="shop.js"></script>
+</body>
+</html>
