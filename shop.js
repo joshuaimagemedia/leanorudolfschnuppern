@@ -23,8 +23,8 @@ function addToCart(id, name, price, emoji) {
   if (idx >= 0) { cart[idx].qty++; }
   else { cart.push({ id: id, qty: 1, name: name, price: price, emoji: emoji }); }
   saveCart(cart);
-  updateCartBadge();
-  showToast('🛒 In den Warenkorb!');
+  updateCartBadge(true);
+  showToast('In den Warenkorb!');
 }
 
 function toggleWishlist(id) {
@@ -51,11 +51,17 @@ function refreshWishlistButtons() {
   });
 }
 
-function updateCartBadge() {
+function updateCartBadge(bump) {
   const total = getCart().reduce(function(s, i) { return s + i.qty; }, 0);
   document.querySelectorAll('.cart-badge').forEach(function(b) {
     b.textContent = total;
+    const wasShown = b.classList.contains('show');
     b.classList.toggle('show', total > 0);
+    if (bump && total > 0) {
+      b.classList.remove('bump');
+      void b.offsetWidth;
+      b.classList.add('bump');
+    }
   });
 }
 

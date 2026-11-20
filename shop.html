@@ -279,6 +279,13 @@
 
 <script src="shop.js"></script>
 <script>
+/* Staggered card entrance */
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.shop-card').forEach(function(card, i) {
+    card.style.animationDelay = (i * 40) + 'ms';
+  });
+});
+
 /* Filter */
 var activeFilter = 'alle';
 function setFilter(cat, btn) {
